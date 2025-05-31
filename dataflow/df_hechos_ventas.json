@@ -16,7 +16,11 @@
 				}
 			],
 			"sinks": [],
-			"transformations": [],
+			"transformations": [
+				{
+					"name": "cast1"
+				}
+			],
 			"scriptLines": [
 				"source(output(",
 				"          NoFactura as integer,",
@@ -34,7 +38,11 @@
 				"     validateSchema: false,",
 				"     isolationLevel: 'READ_UNCOMMITTED',",
 				"     query: 'SELECT \\n    NoFactura,\\n    CodInventario,\\n    Descripcion,\\n    Categoria,\\n    Tamano,\\n    Cantidad,\\n    Fecha,\\n    Hora,\\n    PrecioUnitario,\\n    Total\\nFROM dbo.tbl_ventas_pizzas\\n',",
-				"     format: 'query') ~> source1"
+				"     format: 'query') ~> source1",
+				"source1 cast(output(",
+				"          NoFactura as integer",
+				"     ),",
+				"     errors: true) ~> cast1"
 			]
 		}
 	}
