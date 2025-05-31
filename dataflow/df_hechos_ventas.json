@@ -46,7 +46,10 @@
 				"          Categoria as string,",
 				"          Tamano as string,",
 				"          Cantidad as integer,",
-				"          Fecha as string",
+				"          Fecha as date,",
+				"          Hora as string,",
+				"          PrecioUnitario as decimal(10,0),",
+				"          Total as decimal(10,0)",
 				"     ),",
 				"     errors: true) ~> cast1"
 			]
