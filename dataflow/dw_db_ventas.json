@@ -71,7 +71,11 @@
 				"          CodInventario = pizza_id,",
 				"          Descripcion = name,",
 				"          Categoria = category,",
-				"          Tamano = size",
+				"          Tamano = size,",
+				"          Cantidad = quantity,",
+				"          Fecha = date,",
+				"          Hora = time,",
+				"          PrecioUnitario = price",
 				"     )) ~> sink1"
 			]
 		}
