@@ -38,7 +38,7 @@
 				"     isolationLevel: 'READ_UNCOMMITTED',",
 				"     query: 'SELECT DISTINCT Tamano\\nFROM dbo.tbl_ventas_pizzas\\nWHERE Tamano IS NOT NULL\\n',",
 				"     format: 'query') ~> source1",
-				"source1 sort(asc(Tamano, true)) ~> sort1",
+				"source1 sort(desc(Tamano, true)) ~> sort1",
 				"sort1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
@@ -54,7 +54,8 @@
 				"     skipDuplicateMapOutputs: true,",
 				"     errorHandlingOption: 'stopOnFirstError',",
 				"     mapColumn(",
-				"          tamano_id = Tamano",
+				"          tamano_id = Tamano,",
+				"          descripcion = Tamano",
 				"     )) ~> sink1"
 			]
 		}
