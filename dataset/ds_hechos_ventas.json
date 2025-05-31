@@ -1,0 +1,63 @@
+{
+	"name": "ds_hechos_ventas",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_sql_dw_pizzas",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "DW"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "id_venta",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "noFactura",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "fecha",
+				"type": "date"
+			},
+			{
+				"name": "producto_id",
+				"type": "varchar"
+			},
+			{
+				"name": "tipo_id",
+				"type": "varchar"
+			},
+			{
+				"name": "tamano_id",
+				"type": "char"
+			},
+			{
+				"name": "cantidad",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "precio_unitario",
+				"type": "decimal",
+				"precision": 5,
+				"scale": 2
+			},
+			{
+				"name": "total",
+				"type": "decimal",
+				"precision": 7,
+				"scale": 2
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "hechos_ventas"
+		}
+	}
+}
