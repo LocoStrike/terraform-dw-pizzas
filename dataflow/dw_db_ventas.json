@@ -75,7 +75,6 @@
 				"     skipDuplicateMapOutputs: true,",
 				"     errorHandlingOption: 'stopOnFirstError',",
 				"     mapColumn(",
-				"          OrderDetailsID = order_details_id,",
 				"          NoFactura = order_id,",
 				"          CodInventario = pizza_id,",
 				"          Descripcion = name,",
