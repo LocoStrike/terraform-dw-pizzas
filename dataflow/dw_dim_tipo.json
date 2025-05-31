@@ -15,8 +15,20 @@
 					"name": "source1"
 				}
 			],
-			"sinks": [],
-			"transformations": [],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "ds_dim_tipo",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "sort1"
+				}
+			],
 			"scriptLines": [
 				"source(output(",
 				"          Categoria as string",
@@ -25,7 +37,26 @@
 				"     validateSchema: false,",
 				"     isolationLevel: 'READ_UNCOMMITTED',",
 				"     query: 'SELECT DISTINCT Categoria\\nFROM dbo.tbl_ventas_pizzas\\nWHERE Categoria IS NOT NULL\\n',",
-				"     format: 'query') ~> source1"
+				"     format: 'query') ~> source1",
+				"source1 sort(desc(Categoria, true)) ~> sort1",
+				"sort1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          tipo_id as string,",
+				"          categoria as string,",
+				"          ingredientes as string",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError',",
+				"     mapColumn(",
+				"          categoria = Categoria",
+				"     )) ~> sink1"
 			]
 		}
 	}
