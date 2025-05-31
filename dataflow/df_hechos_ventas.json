@@ -42,7 +42,11 @@
 				"source1 cast(output(",
 				"          NoFactura as integer,",
 				"          CodInventario as string,",
-				"          Descripcion as string",
+				"          Descripcion as string,",
+				"          Categoria as string,",
+				"          Tamano as string,",
+				"          Cantidad as integer,",
+				"          Fecha as string",
 				"     ),",
 				"     errors: true) ~> cast1"
 			]
