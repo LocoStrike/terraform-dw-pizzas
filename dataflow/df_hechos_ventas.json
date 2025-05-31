@@ -1,0 +1,42 @@
+{
+	"name": "df_hechos_ventas",
+	"properties": {
+		"folder": {
+			"name": "DW"
+		},
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "ds_tbl_ventas",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [],
+			"transformations": [],
+			"scriptLines": [
+				"source(output(",
+				"          OrderDetailsID as integer,",
+				"          NoFactura as integer,",
+				"          CodInventario as string,",
+				"          Descripcion as string,",
+				"          Categoria as string,",
+				"          Tamano as string,",
+				"          Cantidad as string,",
+				"          Fecha as string,",
+				"          Hora as string,",
+				"          PrecioUnitario as string,",
+				"          Total as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     isolationLevel: 'READ_UNCOMMITTED',",
+				"     query: 'SELECT \\n    order_id            AS NoFactura,\\n    pizza_id            AS CodInventario,\\n    name                AS Descripcion,\\n    category            AS Categoria,\\n    size                AS Tamano,\\n    quantity            AS Cantidad,\\n    date                AS Fecha,\\n    time                AS Hora,\\n    price               AS PrecioUnitario,\\n    quantity * price    AS Total\\nFROM dbo.tbl_ventas_pizzas\\nWHERE order_id IS NOT NULL\\n',",
+				"     format: 'query') ~> source1"
+			]
+		}
+	}
+}
