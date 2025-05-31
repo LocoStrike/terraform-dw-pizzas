@@ -40,7 +40,9 @@
 				"     query: 'SELECT \\n    NoFactura,\\n    CodInventario,\\n    Descripcion,\\n    Categoria,\\n    Tamano,\\n    Cantidad,\\n    Fecha,\\n    Hora,\\n    PrecioUnitario,\\n    Total\\nFROM dbo.tbl_ventas_pizzas\\n',",
 				"     format: 'query') ~> source1",
 				"source1 cast(output(",
-				"          NoFactura as integer",
+				"          NoFactura as integer,",
+				"          CodInventario as string,",
+				"          Descripcion as string",
 				"     ),",
 				"     errors: true) ~> cast1"
 			]
