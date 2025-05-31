@@ -17,6 +17,10 @@
 			],
 			"sinks": [
 				{
+					"dataset": {
+						"referenceName": "ds_tbl_ventas",
+						"type": "DatasetReference"
+					},
 					"name": "sink1"
 				}
 			],
@@ -40,8 +44,27 @@
 				"     ignoreNoFilesFound: false) ~> source1",
 				"source1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
+				"     input(",
+				"          OrderDetailsID as integer,",
+				"          NoFactura as integer,",
+				"          CodInventario as string,",
+				"          Descripcion as string,",
+				"          Categoria as string,",
+				"          Tamano as string,",
+				"          Cantidad as string,",
+				"          Fecha as string,",
+				"          Hora as string,",
+				"          PrecioUnitario as string,",
+				"          Total as string",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> sink1"
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError') ~> sink1"
 			]
 		}
 	}
