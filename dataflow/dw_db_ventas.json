@@ -64,7 +64,11 @@
 				"     format: 'table',",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
-				"     errorHandlingOption: 'stopOnFirstError') ~> sink1"
+				"     errorHandlingOption: 'stopOnFirstError',",
+				"     mapColumn(",
+				"          OrderDetailsID = order_details_id,",
+				"          NoFactura = order_id",
+				"     )) ~> sink1"
 			]
 		}
 	}
