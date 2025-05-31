@@ -80,7 +80,8 @@
 				"          Cantidad = quantity,",
 				"          Fecha = date,",
 				"          Hora = time,",
-				"          PrecioUnitario = price",
+				"          PrecioUnitario = price,",
+				"          Total = TOTAL",
 				"     )) ~> sink1"
 			]
 		}
