@@ -67,7 +67,11 @@
 				"     errorHandlingOption: 'stopOnFirstError',",
 				"     mapColumn(",
 				"          OrderDetailsID = order_details_id,",
-				"          NoFactura = order_id",
+				"          NoFactura = order_id,",
+				"          CodInventario = pizza_id,",
+				"          Descripcion = name,",
+				"          Categoria = category,",
+				"          Tamano = size",
 				"     )) ~> sink1"
 			]
 		}
