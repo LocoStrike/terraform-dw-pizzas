@@ -16,7 +16,11 @@
 				}
 			],
 			"sinks": [],
-			"transformations": [],
+			"transformations": [
+				{
+					"name": "sort1"
+				}
+			],
 			"scriptLines": [
 				"source(output(",
 				"          Tamano as string",
@@ -25,7 +29,8 @@
 				"     validateSchema: false,",
 				"     isolationLevel: 'READ_UNCOMMITTED',",
 				"     query: 'SELECT DISTINCT Tamano\\nFROM dbo.tbl_ventas_pizzas\\nWHERE Tamano IS NOT NULL\\n',",
-				"     format: 'query') ~> source1"
+				"     format: 'query') ~> source1",
+				"source1 sort(asc(ERROR_FUNCTION(''), true)) ~> sort1"
 			]
 		}
 	}
