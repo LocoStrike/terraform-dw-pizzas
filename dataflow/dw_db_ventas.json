@@ -27,6 +27,9 @@
 			"transformations": [
 				{
 					"name": "TOTAL"
+				},
+				{
+					"name": "limpieza"
 				}
 			],
 			"scriptLines": [
@@ -46,7 +49,8 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> source1",
-				"source1 derive(TOTAL = toInteger(quantity) * toDecimal(price)) ~> TOTAL",
+				"limpieza derive(TOTAL = toInteger(quantity) * toDecimal(price)) ~> TOTAL",
+				"source1 derive(order_details_id = iif(isNull(order_details_id), toInteger(0), toInteger(order_details_id))) ~> limpieza",
 				"TOTAL sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
