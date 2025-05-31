@@ -46,7 +46,7 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> source1",
-				"source1 derive({} = toInteger(quantity) * toDecimal(price)) ~> TOTAL",
+				"source1 derive(TOTAL = toInteger(quantity) * toDecimal(price)) ~> TOTAL",
 				"TOTAL sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
