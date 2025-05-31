@@ -1,5 +1,5 @@
 {
-	"name": "pipeline1",
+	"name": "pipeline_db_ventas",
 	"properties": {
 		"activities": [
 			{
@@ -15,6 +15,10 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
+					"dataflow": {
+						"referenceName": "dw_db_ventas",
+						"type": "DataFlowReference"
+					},
 					"compute": {
 						"coreCount": 8,
 						"computeType": "General"
