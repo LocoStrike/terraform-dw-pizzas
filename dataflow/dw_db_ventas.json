@@ -1,16 +1,39 @@
 {
-	"name": "dataflow1",
+	"name": "dw_db_ventas",
 	"properties": {
 		"folder": {
 			"name": "DB"
 		},
 		"type": "MappingDataFlow",
 		"typeProperties": {
-			"sources": [],
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "pizza_sales_unificado_csv",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				}
+			],
 			"sinks": [],
 			"transformations": [],
 			"scriptLines": [
-				""
+				"source(output(",
+				"          order_details_id as string,",
+				"          order_id as string,",
+				"          pizza_id as string,",
+				"          quantity as string,",
+				"          date as string,",
+				"          time as string,",
+				"          pizza_type_id as string,",
+				"          size as string,",
+				"          price as string,",
+				"          name as string,",
+				"          category as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> source1"
 			]
 		}
 	}
