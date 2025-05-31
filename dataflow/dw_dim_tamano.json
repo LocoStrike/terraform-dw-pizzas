@@ -1,0 +1,32 @@
+{
+	"name": "dw_dim_tamano",
+	"properties": {
+		"folder": {
+			"name": "DW"
+		},
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "ds_tbl_ventas",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [],
+			"transformations": [],
+			"scriptLines": [
+				"source(output(",
+				"          Tamano as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     isolationLevel: 'READ_UNCOMMITTED',",
+				"     query: 'SELECT DISTINCT Tamano\\nFROM dbo.tbl_ventas_pizzas\\nWHERE Tamano IS NOT NULL\\n',",
+				"     format: 'query') ~> source1"
+			]
+		}
+	}
+}
