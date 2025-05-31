@@ -15,7 +15,15 @@
 					"name": "source1"
 				}
 			],
-			"sinks": [],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "ds_hechos_ventas",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
 			"transformations": [
 				{
 					"name": "cast1"
@@ -51,7 +59,34 @@
 				"          PrecioUnitario as decimal(10,0),",
 				"          Total as decimal(10,0)",
 				"     ),",
-				"     errors: true) ~> cast1"
+				"     errors: true) ~> cast1",
+				"cast1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          id_venta as integer,",
+				"          noFactura as integer,",
+				"          fecha as date,",
+				"          producto_id as string,",
+				"          tipo_id as string,",
+				"          tamano_id as string,",
+				"          cantidad as integer,",
+				"          precio_unitario as decimal(5,2),",
+				"          total as decimal(7,2)",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError',",
+				"     mapColumn(",
+				"          noFactura = NoFactura,",
+				"          fecha = Fecha,",
+				"          cantidad = Cantidad,",
+				"          total = Total",
+				"     )) ~> sink1"
 			]
 		}
 	}
