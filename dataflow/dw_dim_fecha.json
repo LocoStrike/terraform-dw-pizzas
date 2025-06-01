@@ -30,6 +30,9 @@
 				},
 				{
 					"name": "sort1"
+				},
+				{
+					"name": "aggregate1"
 				}
 			],
 			"scriptLines": [
@@ -45,7 +48,8 @@
 				"          Fecha as date",
 				"     ),",
 				"     errors: true) ~> Conversion",
-				"Conversion sort(asc(Fecha, true)) ~> sort1",
+				"aggregate1 sort(asc(Fecha, true)) ~> sort1",
+				"Conversion aggregate() ~> aggregate1",
 				"sort1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
