@@ -82,7 +82,6 @@
 				"     skipDuplicateMapOutputs: true,",
 				"     errorHandlingOption: 'stopOnFirstError',",
 				"     mapColumn(",
-				"          id_venta = NoFactura,",
 				"          noFactura = NoFactura,",
 				"          fecha = Fecha,",
 				"          producto_id = CodInventario,",
