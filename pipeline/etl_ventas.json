@@ -5,14 +5,7 @@
 			{
 				"name": "Data flow1",
 				"type": "ExecuteDataFlow",
-				"dependsOn": [
-					{
-						"activity": "Data flow4",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
+				"dependsOn": [],
 				"policy": {
 					"timeout": "0.12:00:00",
 					"retry": 0,
@@ -38,7 +31,7 @@
 				"type": "ExecuteDataFlow",
 				"dependsOn": [
 					{
-						"activity": "Data flow5",
+						"activity": "Data flow1",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -69,7 +62,7 @@
 				"type": "ExecuteDataFlow",
 				"dependsOn": [
 					{
-						"activity": "Data flow2",
+						"activity": "Data flow5",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -100,7 +93,7 @@
 				"type": "ExecuteDataFlow",
 				"dependsOn": [
 					{
-						"activity": "Data flow3",
+						"activity": "Data flow2",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -129,7 +122,14 @@
 			{
 				"name": "Data flow5",
 				"type": "ExecuteDataFlow",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "Data flow4",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"policy": {
 					"timeout": "0.12:00:00",
 					"retry": 0,
