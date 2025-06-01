@@ -82,12 +82,14 @@
 				"     skipDuplicateMapOutputs: true,",
 				"     errorHandlingOption: 'stopOnFirstError',",
 				"     mapColumn(",
-				"          id_venta = CodInventario,",
+				"          id_venta = NoFactura,",
 				"          noFactura = NoFactura,",
 				"          fecha = Fecha,",
+				"          producto_id = Descripcion,",
 				"          tipo_id = Tamano,",
 				"          tamano_id = Tamano,",
 				"          cantidad = Cantidad,",
+				"          precio_unitario = PrecioUnitario,",
 				"          total = Total",
 				"     )) ~> sink1"
 			]
